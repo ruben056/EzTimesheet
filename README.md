@@ -3,6 +3,10 @@
 This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
 version 0.14.0.
 
+## checkout
+
+**Immediatly after checkout** run `bower install` and `npm install` to retrieve all dependencies defined in the package.json and bower.json files.
+
 ## Build & development
 
 Run `grunt` for building and `grunt serve` for preview.
