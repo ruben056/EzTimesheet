@@ -1,0 +1,34 @@
+form#timesheet {
+  font-family: Georgia, Times, "Times New Roman", serif;
+}
+
+form#timesheet li{
+  clear:both;
+}
+
+form#timesheet label {
+  width: 250px;
+  padding-right: 5px;
+  float: left;
+}
+form#timesheet input {
+  width: 150px;
+  float:left;
+}
+
+.sunday {
+  border-bottom: 1px solid #777;
+  padding-bottom: 15px;
+  margin-bottom: 10px;
+}
+
+span.decimals, span.hoursandminutes {
+  float: left;
+  width: 100px;
+  min-width: 100px;
+  max-width: 100px;
+}
+
+form#timesheet button{
+  float:left;
+}

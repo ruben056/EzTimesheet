@@ -1,0 +1,14 @@
+<form name="timesheet" id="timesheet" ng-controller="TimesheetCtrl">
+  <ol>
+    <li ng-repeat="dayOfMonth in daysOfMonth" ng-class="{sunday: dayOfMonth.isSunday}">
+      <label for="{{dayOfMonth.id}}">{{dayOfMonth.formattedDay}}</label>
+      <input ng-model="dayOfMonth.input" id="{{dayOfMonth.id}}" ng-disabled="dayOfMonth.isSunday || dayOfMonth.isSaturday" />
+      <span class="hoursandminutes">{{dayOfMonth.input | toMinutes}}</span>
+      <span class="decimals">{{dayOfMonth.input | toDecimal}}</span>
+    </li>
+  </ol>
+
+    <button ng-click="submitTimesheet()" ng-disabled="!timesheet.$valid">Submit
+      </button/>
+  
+</form>
