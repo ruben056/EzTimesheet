@@ -47,12 +47,11 @@ in based on the exported file.
 
 ### Status
 #### Todo
- * add requirejs to the mix
  * unit tests:
   * to start make them for the filters(decimal/minutes), the have some bugs in them ...
+ * add requirejs to the mix
   * controllers...
- * grunt test : has problems with the moment.js libraries
-  * could be interesting to replace with angular-moment libraries or something...
+ * could be interesting to replace with angular-moment libraries or something...
  * add "monthpicker"
   * see angular libs for this
  * make app secure : must login to do something (backend?)
@@ -68,7 +67,7 @@ in based on the exported file.
  * differentiate between weekends etc...
  * redone program with yo anguler generator including bootstrap and html5boilertemplate
  * created and applied filters for different formats: decimals/minutes
-
+ * grunt test : has problems with the moment.js libraries : solved was due to order in which they are loaded in karma.conf.js
 
 ### FYI
 Development environment info:
