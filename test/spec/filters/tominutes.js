@@ -11,9 +11,8 @@ describe('Filter: toMinutes', function () {
     toMinutes = $filter('toMinutes');
   }));
 
-  it('should return the input prefixed with "toMinutes filter:"', function () {
-    var text = 'angularjs';
-    expect(toMinutes(text)).toBe('toMinutes filter: ' + text);
+  it('should return the input with decimals converted to minutes', function () {
+    expect(toMinutes('8,50')).toBe('8:30');
   });
 
 });

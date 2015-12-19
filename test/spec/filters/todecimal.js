@@ -11,9 +11,8 @@ describe('Filter: toDecimal', function () {
     toDecimal = $filter('toDecimal');
   }));
 
-  it('should return the input prefixed with "toDecimal filter:"', function () {
-    var text = 'angularjs';
-    expect(toDecimal(text)).toBe('toDecimal filter: ' + text);
+  it('should return the input with minutes converted to decimals:"', function () {
+    expect(toDecimal('8:30')).toBe('8,50');
   });
 
 });

@@ -17,7 +17,10 @@ describe('Controller: TimesheetCtrl', function () {
     });
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(TimesheetCtrl.awesomeThings.length).toBe(3);
+  it('should return the number of days this month', function () {
+    expect(scope.daysOfMonth.length).toBe(31);
   });
+
+  // TODO add some more test ...
+
 });
