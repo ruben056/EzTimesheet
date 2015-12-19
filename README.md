@@ -49,11 +49,16 @@ in based on the exported file.
 
 ### Status
 #### Todo
+ * add requirejs to the mix
+ * unit tests:
+  * to start make them for the filters(decimal/minutes), the have some bugs in them ...
+  * controllers...
  * grunt test : has problems with the moment.js libraries
   * could be interesting to replace with angular-moment libraries or something...
  * add "monthpicker"
   * see angular libs for this
  * make app secure : must login to do something (backend?)
+ * alternative layout for smartphones (device-width stuff)
  * get all functions out of global scope/namespace --> actually need to create services in angularjs to get the current date, but also later to save and retrieve from backend
  * swith order of dates (from 1 -> 31 and from 31 -> 1)
  * ...
