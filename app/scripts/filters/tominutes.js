@@ -9,65 +9,58 @@ angular.module('eztimesheetApp')
         return;
       }
 
-      // check if value contains : or . or , and numbers, or only numbers
-      // then based on these foundings format the input accordingly
-      var hours;
-      var minutes;
-      if (val.indexOf(":") > -1) {
-        if (val.length > 5) {
-          $input.val('');
-          return;
-        }
-        var parts = val.split(":");
-        hours = parts[0];
-        minutes = parts[1];
-        while (minutes >= 60) {
-          hours++;
-          minutes -= 60;
-        }
-      } else if (val.indexOf(".") > -1) {
-        var parts = val.split(".");
-        var hours = parts[0];
-        var decimals = parts[1];
-        // TODO not quit right here: reprocase: put 5,5 and 5,05 are treated the same
-        var power = decimals.length;
-        var minutes = decimals / (1 * Math.pow(10, power)) * (0.6 * Math.pow(10, power));
-        minutes = minutes.toFixed().substr(0, 2);
-      } else if (val.indexOf(",") > -1) {
-        var parts = val.split(",");
-        var hours = parts[0];
-        var decimals = parts[1];
-        var power = decimals.length;
-        var minutes = decimals / (1 * Math.pow(10, power)) * (0.6 * Math.pow(10, power));
-        minutes = minutes.toFixed().substr(0, 2);
-      } else {
-        //if 1 or 2 numbers assume hours so add :00
-        //if more just use the last 2 as minutes (only minutes supported for now, support decimals later...)
-        if (val.length < 3) {
-          if (val > 23) {
-            hours = "";
-            minutes = val;
-            while (minutes >= 60) {
-              hours++;
-              minutes -= 60;
-            }
-          } else {
-            hours = val;
-            minutes = 0;
-          }
+      var twoDigits = new RegExp("^[0-9]{1,2}$");
+      if (twoDigits.test(val)) {
+        return val.toString() + ":00";
+      }
 
-        } else if (val.length < 5) {
-          var hours = val.substring(0, 1);
-          var minutes = val.substring(1, val.length);
-          while (minutes >= 60) {
-            hours++;
-            minutes -= 60;
+      var threeDigits = new RegExp("^[0-9]{3}$");
+      if (threeDigits.test(val)) {
+        var part1 = val.substring(0, 1);
+        var part2 = val.substring(1, 3);
+
+        var part1 = val.substring(0, 1);
+        var part2 = val.substring(1, 3);
+        if (part2 >= 60) {
+          part1 = Number(part1) + 1;
+          part2 = part2 - 60;
+        }
+        if (part2.toString().length == 1) {
+          part2 = "0" + part2
+        }
+        return part1 + ":" + part2;
+      }
+
+
+      var twoGroups = new RegExp("^([0-9]{1,2})([:.,]{1})([0-9]{1,2})$");
+      if (twoGroups.test(val)) {
+        var matcher = twoGroups.exec(val);
+        var part1 = matcher[1];
+        var separator = matcher[2];
+        var part2 = matcher[3];
+
+        // input allready decimal : only fill out zeros
+        if (":" == separator) {
+          if (part2.toString().length == 1) {
+            part2 = part2 + "0";
+          } else if (part2 >= 60) {
+            part1 = Number(part1) + 1;
+            part2 = part2 - 60;
           }
+          return part1 + ":" + part2;
+        } else {
+          if (part2.toString().length == 1) {
+            part2 = part2 + "0"
+          }
+          part2 = (part2 / 10 * 6);
+          if (part2.toString().length == 1) {
+            part2 = "0" + part2
+          }
+          return part1 + ":" + part2;
         }
       }
-      if (minutes.toString().length < 2) {
-        minutes = "0" + minutes
-      }
-      return hours + ":" + minutes
+
+      console.log("No valid value : " + val);
+      return;
     };
   });

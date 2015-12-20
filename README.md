@@ -48,16 +48,16 @@ in based on the exported file.
 ### Status
 #### Todo
  * unit tests:
-  * to start make them for the filters(decimal/minutes), the have some bugs in them ...
- * add requirejs to the mix
-  * controllers...
- * could be interesting to replace with angular-moment libraries or something...
+  * check to add tests for controllers etc...
+ * add some util libraries maybe for converting decimals dates etc... in stead of doing it myself (see the toDecimal/toMinutes filter). However it is important that I still define the required output!!
+ * could be interesting to replace the `moment*.js` with `angular-moment` libraries or something...
  * add "monthpicker"
   * see angular libs for this
  * make app secure : must login to do something (backend?)
  * alternative layout for smartphones (device-width stuff)
  * get all functions out of global scope/namespace --> actually need to create services in angularjs to get the current date, but also later to save and retrieve from backend
- * swith order of dates (from 1 -> 31 and from 31 -> 1)
+ * switch order of dates (from 1 -> 31 and from 31 -> 1)
+ * (add requirejs to the mix) --> consider this when project gets bigger (more dependencies...)
  * ...
 
 
@@ -68,6 +68,8 @@ in based on the exported file.
  * redone program with yo anguler generator including bootstrap and html5boilertemplate
  * created and applied filters for different formats: decimals/minutes
  * grunt test : has problems with the moment.js libraries : solved was due to order in which they are loaded in karma.conf.js
+ * unit tests:
+  * to start make them for the filters(decimal/minutes)
 
 ### FYI
 Development environment info:
