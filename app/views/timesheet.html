@@ -1,14 +1,22 @@
-<form name="timesheet" id="timesheet" ng-controller="TimesheetCtrl">
+<form name="timesheet" id="timesheet" ng-controller="TimesheetCtrl ">
+
+
+  <select ng-model="selectedYear" ng-options="year for year in years" ng-change="yearChanged(selectedYear)">
+  </select>
+  <select ng-model="selectedMonth" ng-options="month.label for month in months track by month.id" ng-change="monthChanged(selectedYear, selectedMonth)">
+  </select>
+
+
   <ol>
-    <li ng-repeat="dayOfMonth in daysOfMonth" ng-class="{sunday: dayOfMonth.isSunday}">
-      <label for="{{dayOfMonth.id}}">{{dayOfMonth.formattedDay}}</label>
-      <input ng-model="dayOfMonth.input" id="{{dayOfMonth.id}}" ng-disabled="dayOfMonth.isSunday || dayOfMonth.isSaturday" />
-      <span class="hoursandminutes">{{dayOfMonth.input | toMinutes}}</span>
-      <span class="decimals">{{dayOfMonth.input | toDecimal}}</span>
+    <li ng-repeat="dayOfMonth in daysOfMonth " ng-class="{sunday: dayOfMonth.isSunday} ">
+      <label for="{{dayOfMonth.id}} ">{{dayOfMonth.formattedDay}}</label>
+      <input ng-model="dayOfMonth.input " id="{{dayOfMonth.id}} " ng-disabled="dayOfMonth.isSunday || dayOfMonth.isSaturday " />
+      <span class="hoursandminutes ">{{dayOfMonth.input | toMinutes}}</span>
+      <span class="decimals ">{{dayOfMonth.input | toDecimal}}</span>
     </li>
   </ol>
 
-    <button ng-click="submitTimesheet()" ng-disabled="!timesheet.$valid">Submit
-      </button/>
-  
+  <button ng-click="submitTimesheet() " ng-disabled="!timesheet.$valid ">Submit
+    </button/>
+
 </form>
